@@ -8,7 +8,8 @@
 				"dev": "vue-cli-service serve --port 9999  --mode dev",
 				"int": "vue-cli-service serve --port 9999  --mode int",
 				"build:int": "vue-cli-service build --mode int",
-				"build:dev": "vue-cli-service build --mode dev"
+				"build:dev": "vue-cli-service build --mode dev",
+        "docs:build": "vuepress build docs"
 		},
 		"dependencies": {
 				"core-js": "^2.6.5",
