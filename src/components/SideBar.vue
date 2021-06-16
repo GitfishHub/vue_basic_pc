@@ -37,9 +37,9 @@
         <i class="el-icon-menu"></i>
         <span slot="title">导航二</span>
       </el-menu-item>
-      <el-menu-item index="3">
+      <el-menu-item index="treelist">
         <i class="el-icon-setting"></i>
-        <span slot="title">导航三</span>
+        <span slot="title">tree</span>
       </el-menu-item>
     </el-menu>
   </div>

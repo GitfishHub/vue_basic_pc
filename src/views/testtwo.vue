@@ -37,7 +37,7 @@
           ></el-input>
         </el-col>
       </el-row>
-      <!-- <div style="margin: 10px 0;">设置字体颜色为:</div>
+      <div style="margin: 10px 0;">设置字体颜色为:</div>
       <el-row>
         <el-col :span="4">
           <el-color-picker
@@ -45,7 +45,7 @@
             v-model="color"
           ></el-color-picker>
         </el-col>
-      </el-row> -->
+      </el-row>
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@ export default {
       },
       newValue: null,
       size: 12,
-      // color: '#000',
+      color: '#000',
     }
   },
   methods: {
@@ -81,9 +81,9 @@ export default {
     handleChange(val) {
       this.$refs.innerValue.style.fontSize = val + 'px'
     },
-    // handleChangeCilor(color) {
-    //   this.$refs.innerValue.style.color = color
-    // },
+    handleChangeCilor(color) {
+      this.$refs.innerValue.style.color = color
+    },
   },
 }
 </script>
