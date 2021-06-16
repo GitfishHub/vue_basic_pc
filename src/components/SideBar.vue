@@ -21,9 +21,9 @@
         <el-menu-item-group>
           <span slot="title">分组一</span>
           <el-menu-item :index="'/testone'">
-            去除标签
+            测试
           </el-menu-item>
-          <el-menu-item :index="'/testtwo'">测试1</el-menu-item>
+          <el-menu-item :index="'/testtwo'">去除标签</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="分组2">
           <el-menu-item :index="'/home'">home</el-menu-item>
