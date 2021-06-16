@@ -107,6 +107,8 @@ export default {
   },
   methods: {
     async selectChangeEvent({ row, checked, level }) {
+      this.parentNode = {}
+      this.parentNodeNext = {}
       if (checked) {
         await this.tree(this.tableData, row)
         if (level == 2) {
