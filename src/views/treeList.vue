@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-      // parentNode: {}, //二级数据
+      parentNode: {}, //二级数据
       parentNodeNext: {}, //一级数据
       tableData: [
         {
@@ -185,33 +185,33 @@ export default {
         }
       }
     },
-    // tree(data, row, arr, resarr) {
-    //   for (let i = 0; i < data.length; i++) {
-    //     let arr2 = [...arr];
-    //     arr2.push(i);
-    //     if (data[i].id == row.id) {
-    //       resarr.push(arr2);
-    //       break;
-    //     } else {
-    //       if (data[i].children) {
-    //         this.tree(data[i].children, row, arr2, resarr);
-    //       }
-    //     }
-    //   }
-    // },
-    // treeNext(data, row, parent) {
-    //   if (row) {
-    //     for (var i in data) {
-    //       if (data[i].id == row.id) {
-    //         this.parentNodeNext = parent;
-    //       } else {
-    //         if (data[i].children) {
-    //           this.treeNext(data[i].children, row, data[i]);
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    tree(data, row, arr, resarr) {
+      for (let i = 0; i < data.length; i++) {
+        let arr2 = [...arr]
+        arr2.push(i)
+        if (data[i].id == row.id) {
+          resarr.push(arr2)
+          break
+        } else {
+          if (data[i].children) {
+            this.tree(data[i].children, row, arr2, resarr)
+          }
+        }
+      }
+    },
+    treeNext(data, row, parent) {
+      if (row) {
+        for (var i in data) {
+          if (data[i].id == row.id) {
+            this.parentNodeNext = parent
+          } else {
+            if (data[i].children) {
+              this.treeNext(data[i].children, row, data[i])
+            }
+          }
+        }
+      }
+    },
   },
 }
 </script>
