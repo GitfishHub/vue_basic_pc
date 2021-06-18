@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-      parentNode: {}, //二级数据
+      // parentNode: {}, //二级数据
       parentNodeNext: {}, //一级数据
       tableData: [
         {
@@ -106,7 +106,18 @@ export default {
     }
   },
   methods: {
-    async selectChangeEvent({ row, checked, level }) {
+    async selectChangeEvent({ records, data }) {
+      let resarr = []
+      let resjson = []
+      records.map((item, index) => {
+        this.tree(data, item, [], resarr)
+      })
+      for (let i = 0; i < resarr.length; i++) {
+        this.setnewtree(resjson, resarr[i], data, 0, resarr)
+      }
+      console.log(resjson)
+    },
+    /* async selectChangeEvent({ row, checked, level }) {
       this.parentNode = {}
       this.parentNodeNext = {}
       if (checked) {
@@ -116,31 +127,91 @@ export default {
         }
         console.log(this.parentNode, this.parentNodeNext)
       }
-    },
-    tree(data, row, parent) {
-      for (var i in data) {
-        if (data[i].id == row.id) {
-          this.parentNode = parent
-        } else {
-          if (data[i].children) {
-            this.tree(data[i].children, row, data[i])
-          }
-        }
-      }
-    },
-    treeNext(data, row, parent) {
-      if (row) {
-        for (var i in data) {
-          if (data[i].id == row.id) {
-            this.parentNodeNext = parent
-          } else {
-            if (data[i].children) {
-              this.treeNext(data[i].children, row, data[i])
+    }, */
+    setnewtree(resjson, arrone, data, index) {
+      if (index < arrone.length) {
+        index++
+        if (resjson.length) {
+          let flag = false
+          resjson.map((item) => {
+            if (item.id == data[arrone[index - 1]].id) {
+              flag = true
+              if (index < arrone.length) {
+                this.setnewtree(
+                  item.children,
+                  arrone,
+                  data[arrone[index - 1]].children,
+                  index,
+                )
+              }
+            }
+          })
+          if (!flag) {
+            resjson.push({
+              id: data[arrone[index - 1]].id,
+              name: data[arrone[index - 1]].name,
+              type: data[arrone[index - 1]].type,
+              size: data[arrone[index - 1]].size,
+              date: data[arrone[index - 1]].date,
+            })
+            if (index < arrone.length) {
+              this.setnewtree(
+                (resjson[resjson.length - 1].children = []),
+                arrone,
+                data[arrone[index - 1]].children,
+                index,
+              )
             }
           }
+        } else {
+          /* console.log(arrone)
+          console.log(index) */
+          resjson.push({
+            id: data[arrone[index - 1]].id,
+            name: data[arrone[index - 1]].name,
+            type: data[arrone[index - 1]].type,
+            size: data[arrone[index - 1]].size,
+            date: data[arrone[index - 1]].date,
+          })
+          if (index < arrone.length) {
+            // console.log(data[arrone[index-1]].children)
+            this.setnewtree(
+              (resjson[resjson.length - 1].children = []),
+              arrone,
+              data[arrone[index - 1]].children,
+              index,
+            )
+          }
         }
       }
     },
+    // tree(data, row, arr, resarr) {
+    //   for (let i = 0; i < data.length; i++) {
+    //     let arr2 = [...arr];
+    //     arr2.push(i);
+    //     if (data[i].id == row.id) {
+    //       resarr.push(arr2);
+    //       break;
+    //     } else {
+    //       if (data[i].children) {
+    //         this.tree(data[i].children, row, arr2, resarr);
+    //       }
+    //     }
+    //   }
+    // },
+    // treeNext(data, row, parent) {
+    //   if (row) {
+    //     for (var i in data) {
+    //       if (data[i].id == row.id) {
+    //         this.parentNodeNext = parent;
+    //       } else {
+    //         if (data[i].children) {
+    //           this.treeNext(data[i].children, row, data[i]);
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
   },
 }
 </script>
