@@ -25,8 +25,6 @@
 export default {
   data() {
     return {
-      parentNode: {}, //二级数据
-      parentNodeNext: {}, //一级数据
       tableData: [
         {
           id: 1000,
@@ -117,17 +115,6 @@ export default {
       }
       console.log(resjson)
     },
-    /* async selectChangeEvent({ row, checked, level }) {
-      this.parentNode = {}
-      this.parentNodeNext = {}
-      if (checked) {
-        await this.tree(this.tableData, row)
-        if (level == 2) {
-          await this.treeNext(this.tableData, this.parentNode)
-        }
-        console.log(this.parentNode, this.parentNodeNext)
-      }
-    }, */
     setnewtree(resjson, arrone, data, index) {
       if (index < arrone.length) {
         index++
@@ -164,8 +151,6 @@ export default {
             }
           }
         } else {
-          /* console.log(arrone)
-          console.log(index) */
           resjson.push({
             id: data[arrone[index - 1]].id,
             name: data[arrone[index - 1]].name,
@@ -174,7 +159,6 @@ export default {
             date: data[arrone[index - 1]].date,
           })
           if (index < arrone.length) {
-            // console.log(data[arrone[index-1]].children)
             this.setnewtree(
               (resjson[resjson.length - 1].children = []),
               arrone,
@@ -195,19 +179,6 @@ export default {
         } else {
           if (data[i].children) {
             this.tree(data[i].children, row, arr2, resarr)
-          }
-        }
-      }
-    },
-    treeNext(data, row, parent) {
-      if (row) {
-        for (var i in data) {
-          if (data[i].id == row.id) {
-            this.parentNodeNext = parent
-          } else {
-            if (data[i].children) {
-              this.treeNext(data[i].children, row, data[i])
-            }
           }
         }
       }
