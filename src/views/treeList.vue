@@ -138,7 +138,7 @@ export default {
               flag = true
               if (index < arrone.length) {
                 this.setnewtree(
-                  item.children,
+                  item.children ? item.children : (item.children = []),
                   arrone,
                   data[arrone[index - 1]].children,
                   index,
