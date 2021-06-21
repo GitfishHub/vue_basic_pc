@@ -79,6 +79,13 @@ export default {
       this.setflagfalse(this.tableData, this.copytable)
       let resarr = []
       let resbasearr = []
+      let resjson = []
+      records.map((item, index) => {
+        this.tree(data, item, [], resarr)
+      })
+      for (let i = 0; i < resarr.length; i++) {
+        this.setnewtree(resjson, resarr[i], data, 0, resarr)
+      }
       records.map((item, index) => {
         this.tree(data, item, [], resarr)
       })
@@ -87,6 +94,61 @@ export default {
       }
       for (let i = 0; i < resbasearr.length; i++) {
         this.setsizeone(this.tableData, resbasearr[i])
+      }
+      console.log(resjson, 11)
+    },
+    setnewtree(resjson, arrone, data, index) {
+      if (index < arrone.length) {
+        index++
+        if (resjson.length) {
+          let flag = false
+          resjson.map((item) => {
+            if (item.id == data[arrone[index - 1]].id) {
+              flag = true
+              if (index < arrone.length) {
+                this.setnewtree(
+                  item.children ? item.children : (item.children = []),
+                  arrone,
+                  data[arrone[index - 1]].children,
+                  index,
+                )
+              }
+            }
+          })
+          if (!flag) {
+            resjson.push({
+              id: data[arrone[index - 1]].id,
+              name: data[arrone[index - 1]].name,
+              type: data[arrone[index - 1]].type,
+              size: data[arrone[index - 1]].size,
+              date: data[arrone[index - 1]].date,
+            })
+            if (index < arrone.length) {
+              this.setnewtree(
+                (resjson[resjson.length - 1].children = []),
+                arrone,
+                data[arrone[index - 1]].children,
+                index,
+              )
+            }
+          }
+        } else {
+          resjson.push({
+            id: data[arrone[index - 1]].id,
+            name: data[arrone[index - 1]].name,
+            type: data[arrone[index - 1]].type,
+            size: data[arrone[index - 1]].size,
+            date: data[arrone[index - 1]].date,
+          })
+          if (index < arrone.length) {
+            this.setnewtree(
+              (resjson[resjson.length - 1].children = []),
+              arrone,
+              data[arrone[index - 1]].children,
+              index,
+            )
+          }
+        }
       }
     },
     delfather(one, all) {
@@ -133,54 +195,7 @@ export default {
         this.setrecursionarr(nextdata, arrone, value, index)
       }
     },
-    /* setnewtree(resjson, arrone, data, index) {
-      if (index < arrone.length) {
-        index++;
-        if (resjson.length) {
-          let flag = false;
-          resjson.map((item) => {
-            if (item.id == data[arrone[index - 1]].id) {
-              flag = true;
-              if (index < arrone.length) {
-                this.setnewtree(
-                  item.children ? item.children : (item.children = []),
-                  arrone,
-                  data[arrone[index - 1]].children,
-                  index
-                );
-              }
-            }
-          });
-          if (!flag) {
-            resjson.push({
-              id: data[arrone[index - 1]].id,
-              size: data[arrone[index - 1]].size,
-            });
-            if (index < arrone.length) {
-              this.setnewtree(
-                (resjson[resjson.length - 1].children = []),
-                arrone,
-                data[arrone[index - 1]].children,
-                index
-              );
-            }
-          }
-        } else {
-          resjson.push({
-            id: data[arrone[index - 1]].id,
-            size: data[arrone[index - 1]].size,
-          });
-          if (index < arrone.length) {
-            this.setnewtree(
-              (resjson[resjson.length - 1].children = []),
-              arrone,
-              data[arrone[index - 1]].children,
-              index
-            );
-          }
-        }
-      }
-    }, */
+
     tree(data, row, arr, resarr) {
       for (let i = 0; i < data.length; i++) {
         let arr2 = [...arr]
