@@ -42,6 +42,10 @@
         <i class="el-icon-setting"></i>
         <span slot="title">tree</span>
       </el-menu-item>
+      <el-menu-item index="treelistNext">
+        <i class="el-icon-platform-eleme"></i>
+        <span slot="title">treeNext</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>

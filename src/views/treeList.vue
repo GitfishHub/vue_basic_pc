@@ -27,59 +27,59 @@ export default {
     return {
       tableData: [
         {
-          id: 1000,
+          id: 1,
           name: 'vxe-table 从入门到放弃1',
           type: 'mp3',
-          size: 1024,
+          size: 1,
           date: '2020-08-01',
         },
         {
-          id: 1005,
+          id: 2,
           name: 'Test2',
           type: 'mp4',
-          size: null,
+          size: 5,
           date: '2021-04-01',
           children: [
             {
-              id: 24300,
+              id: 3,
               name: 'Test3',
               type: 'avi',
-              size: 1024,
+              size: 1,
               date: '2020-03-01',
             },
             {
-              id: 20045,
+              id: 4,
               name: 'vxe-table 从入门到放弃4',
               type: 'html',
-              size: 600,
+              size: 1,
               date: '2021-04-01',
             },
             {
-              id: 10053,
+              id: 5,
               name: 'vxe-table 从入门到放弃96',
               type: 'avi',
-              size: null,
+              size: 3,
               date: '2021-04-01',
               children: [
                 {
-                  id: 24330,
+                  id: 6,
                   name: 'vxe-table 从入门到放弃5',
                   type: 'txt',
-                  size: 25,
+                  size: 1,
                   date: '2021-10-01',
                 },
                 {
-                  id: 21011,
+                  id: 7,
                   name: 'Test6',
                   type: 'pdf',
-                  size: 512,
+                  size: 1,
                   date: '2020-01-01',
                 },
                 {
-                  id: 22200,
+                  id: 8,
                   name: 'Test7',
                   type: 'js',
-                  size: 1024,
+                  size: 1,
                   date: '2021-06-01',
                 },
               ],
@@ -87,17 +87,17 @@ export default {
           ],
         },
         {
-          id: 23666,
+          id: 9,
           name: 'Test8',
           type: 'xlsx',
-          size: 2048,
+          size: 1,
           date: '2020-11-01',
         },
         {
-          id: 24555,
+          id: 10,
           name: 'vxe-table 从入门到放弃9',
           type: 'avi',
-          size: 224,
+          size: 1,
           date: '2020-10-01',
         },
       ],
@@ -113,7 +113,7 @@ export default {
       for (let i = 0; i < resarr.length; i++) {
         this.setnewtree(resjson, resarr[i], data, 0, resarr)
       }
-      console.log(resjson)
+      console.log(resarr, resjson)
     },
     setnewtree(resjson, arrone, data, index) {
       if (index < arrone.length) {

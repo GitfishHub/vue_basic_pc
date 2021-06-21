@@ -13,6 +13,7 @@ const TestTwo = lazyLoad('/testtwo') //主页
 const Father = lazyLoad('/father') //主页
 const TreeList = lazyLoad('/treeList') //主页
 const EleTree = lazyLoad('/elementUse/eleTree') //主页
+const TreeListNext = lazyLoad('/treeListNext') //主页
 // import HelloWorld from '@/views/HelloWorld'
 
 Vue.use(Router)
@@ -43,6 +44,10 @@ export default new Router({
     {
       path: '/treelist',
       component: TreeList
+    },
+    {
+      path: '/treelistNext',
+      component: TreeListNext
     },
     {
       path: '/ele_tree',
