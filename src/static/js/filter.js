@@ -1,7 +1,27 @@
-import moment from "moment"
+import moment from 'moment'
 const vFilter = {
+  //arraybuff生成base64的图片
+  arrayBufferToBase64(buffer) {
+    return (
+      'data:image/jpeg;base64,' +
+      window.btoa(String.fromCharCode(...new Uint8Array(buffer)))
+    )
+  },
+  //文件流下载
+  downloadGO(data, name) {
+    if (!data) {
+      return
+    }
+    let url = window.URL.createObjectURL(new Blob([data]))
+    let link = document.createElement('a')
+    link.style.display = 'none'
+    link.href = url
+    link.download = (name ? name : '二维码') + '.jpg'
+    document.body.appendChild(link)
+    link.click()
+  },
   getTime: (value) => {
-    return moment(value).format("YYYY-MM-DD HH:mm:ss ")
+    return moment(value).format('YYYY-MM-DD HH:mm:ss ')
   },
   encryption: (val, type) => {
     if (val) {
@@ -15,10 +35,10 @@ const vFilter = {
           break
         case 'phone':
           result = `${start}******${end}`
-          break;
+          break
 
         default:
-          break;
+          break
       }
       return result
     } else {
@@ -31,30 +51,30 @@ const vFilter = {
    * @returns {string|*}
    */
   money: (value) => {
-    const m = [];
-    value = Number(value).toFixed(2);
+    const m = []
+    value = Number(value).toFixed(2)
     // 获取小数部分
-    const decimals = value.match(/\.[0-9]*/g);
+    const decimals = value.match(/\.[0-9]*/g)
     // 获取整数部分
-    const integer = parseInt(value, 10).toString();
-    const temp = integer.split('');
-    const length = temp.length;
+    const integer = parseInt(value, 10).toString()
+    const temp = integer.split('')
+    const length = temp.length
 
     // 添加","分隔符
     function formart() {
-      let count = 0;
+      let count = 0
       for (let n = length; n > 0; n--, count++) {
         if (count && count % 3 === 0) {
-          m.unshift(',');
-          count = 0;
+          m.unshift(',')
+          count = 0
         }
-        m.unshift(temp.pop());
+        m.unshift(temp.pop())
       }
-      const result = m.join('');
-      return decimals ? result.concat(decimals) : result;
+      const result = m.join('')
+      return decimals ? result.concat(decimals) : result
     }
 
-    return length > 3 ? formart() : value;
+    return length > 3 ? formart() : value
   },
   /**
    * 银行卡，四位加一空格
@@ -62,12 +82,12 @@ const vFilter = {
    * @returns {*}
    */
   card: (value) => {
-    value = `${value}`;
-    const reg = /([0-9]{4})/g;
+    value = `${value}`
+    const reg = /([0-9]{4})/g
     if (value) {
-      value = value.replace(reg, '$1 ');
+      value = value.replace(reg, '$1 ')
     }
-    return value;
+    return value
   },
   /**
    * 给字符串中间加***
@@ -78,18 +98,18 @@ const vFilter = {
    */
   safety: (value, frontLen, backLen) => {
     if (value) {
-      const len = value.length;
-      let front = '';
-      let back = '';
+      const len = value.length
+      let front = ''
+      let back = ''
       if (frontLen && len > frontLen) {
-        front = value.slice(0, frontLen);
+        front = value.slice(0, frontLen)
       }
-      if (backLen && len > (frontLen + backLen)) {
-        back = value.slice(len - backLen);
+      if (backLen && len > frontLen + backLen) {
+        back = value.slice(len - backLen)
       }
-      return `${front}***${back}`;
+      return `${front}***${back}`
     }
-    return '';
+    return ''
   },
   /**
    * 把数据字典中的值转换成text
@@ -98,15 +118,15 @@ const vFilter = {
    * @returns {string}
    */
   map: (value, arr) => {
-    let name = '';
+    let name = ''
     if (arr && util.isArray(arr)) {
       arr.forEach((item) => {
         if (item.value === value) {
-          name = item.text;
+          name = item.text
         }
-      });
+      })
     }
-    return name;
+    return name
   },
   /**
    * 过滤掉数据中的值
@@ -115,26 +135,26 @@ const vFilter = {
    * @returns {string}
    */
   allow: (value, arr) => {
-    const _arr = [];
+    const _arr = []
     if (util.isArray(value)) {
       value.forEach((obj) => {
         if (util.isArray(arr)) {
           if (arr.indexOf(obj.value) !== -1) {
-            _arr.push(obj);
+            _arr.push(obj)
           }
         }
-      });
+      })
     }
-    return _arr;
+    return _arr
   },
   capitalize: (text) => {
-    return text[0].toUpperCase() + text.slice(1);
+    return text[0].toUpperCase() + text.slice(1)
   },
   uppercase: (text) => {
-    return text.toUpperCase();
+    return text.toUpperCase()
   },
   lowercase: (text) => {
-    return text.toLowerCase();
+    return text.toLowerCase()
   }
 }
 
