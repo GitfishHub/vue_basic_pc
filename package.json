@@ -21,6 +21,7 @@
 				"moment": "^2.27.0",
 				"vconsole": "^3.3.4",
 				"vue": "^2.6.10",
+				"vue-create-dm": "0.0.20",
 				"vue-router": "^3.4.3",
 				"vxe-table": "^3.3.7",
 				"xe-utils": "^3.2.1"

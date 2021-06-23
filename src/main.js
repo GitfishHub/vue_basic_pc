@@ -1,10 +1,18 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
+import VueCreateDM from 'vue-create-dm'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
-
+import { Dialog as eleModal, Drawer as eleDrawer } from 'element-ui'
+Vue.use(VueCreateDM, {
+  eleModal,
+  eleDrawer,
+  store,
+  router
+})
 //获取vue的版本号,根据不同的版本号采取不同的策略
 // console.log(Vue.version)
 require('less')
@@ -12,7 +20,6 @@ require('less')
 import 'lib-flexible'
 
 Vue.config.productionTip = false
-import store from './store'
 
 import 'xe-utils'
 import VXETable from 'vxe-table'

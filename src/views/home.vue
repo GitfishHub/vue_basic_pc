@@ -1,69 +1,96 @@
 <template>
   <div class="hello">
-    <h1>{{ '15968838382'|encryption("phone") }} <i class="el-icon-edit"></i></h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <el-card>
+      <el-row>
+        <el-col :span="6">
+          <span>姓名:</span>
+          洛小鱼
+        </el-col>
+        <el-col :span="6">
+          <span>电话:</span>
+          {{ '15968838382' | encryption('phone') }}
+        </el-col>
+        <el-col :span="6">
+          <span>简书洛小鱼_大怪兽:</span>
+          <a
+            href="https://www.jianshu.com/u/648d22b1ecac"
+            target="_blank"
+            rel="noopener"
+          >
+            跳转
+          </a>
+        </el-col>
+        <el-col :span="6">
+          <span>github私人仓库:</span>
+          <a
+            href="https://github.com/GitfishHub"
+            target="_blank"
+            rel="noopener"
+          >
+            跳转
+          </a>
+        </el-col>
+        <el-col :span="6">
+          <span>微信:</span>
+          luoxiaoyu_x
+        </el-col>
+        <el-col :span="6">
+          <span>QQ:</span>
+          914867344&&318216007
+        </el-col>
+        <el-col :span="6">
+          <span>私人公众号:</span>
+          洛小鱼的小故事
+          <a @click="handleShow">查看</a>
+        </el-col>
+      </el-row>
+    </el-card>
   </div>
 </template>
 
 <script>
 import api from '@/api'
+import ChartCode from '@/components/chartCode.vue'
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
   },
-  mounted(){
-	  this.$store.dispatch('test','洛小溪')
-	  this.init()
+  mounted() {
+    this.$store.dispatch('test', '洛小溪')
+    this.init()
   },
-  methods:{
-	  async init(){
-		  await api.publicAPI.test().then((res)=>{
-				console.log(res,'xxx')
-		  })
-	  }
-  }
+  methods: {
+    handleShow() {
+      this.$createEleModal({
+        modalProps: {
+          title: '二维码',
+          width: '500px',
+        },
+        content: {
+          template: ChartCode,
+        },
+      })
+    },
+    async init() {
+      await api.publicAPI.test().then((res) => {
+        console.log(res, 'xxx')
+      })
+    },
+  },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
+  margin: 20px 0;
 }
 a {
   color: #42b983;
+}
+.el-col {
+  margin: 20px 0;
+  span {
+    margin: 0 5px;
+  }
 }
 </style>

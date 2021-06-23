@@ -31,7 +31,7 @@
         <el-submenu index="1-4">
           <span slot="title">ElementUse</span>
           <el-menu-item index="/ele_tree">ele_tree</el-menu-item>
-          <el-menu-item index="/ele_tree">选项1</el-menu-item>
+          <el-menu-item index="/ele_tree_1">选项1</el-menu-item>
         </el-submenu>
       </el-submenu>
       <el-menu-item index="father">
