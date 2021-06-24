@@ -10,42 +10,55 @@
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      @select="handleSelect"
       :collapse="isCollapse"
       background-color="rgb(238, 241, 246)"
     >
-      <el-submenu index="1">
+      <el-submenu index="basicInformation">
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">导航一</span>
+          <i class="el-icon-s-home"></i>
+          <span slot="title">基本信息</span>
         </template>
         <el-menu-item-group>
-          <span slot="title">分组一</span>
           <el-menu-item :index="'/testone'">
-            测试
+            <i class="el-icon-grape"></i>
+            <span slot="title">测试</span>
           </el-menu-item>
-          <el-menu-item :index="'/testtwo'">去除标签</el-menu-item>
         </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item :index="'/home'">home</el-menu-item>
+        <el-menu-item-group>
+          <el-menu-item index="/home">
+            <i class="el-icon-s-check"></i>
+            <span slot="title">我的</span>
+          </el-menu-item>
         </el-menu-item-group>
-        <el-submenu index="1-4">
+      </el-submenu>
+      <el-submenu index="elementUse">
+        <template slot="title">
+          <i class="el-icon-s-promotion"></i>
           <span slot="title">ElementUse</span>
-          <el-menu-item index="/ele_tree">ele_tree</el-menu-item>
-          <el-menu-item index="/ele_tree_1">选项1</el-menu-item>
-        </el-submenu>
+        </template>
+        <el-menu-item index="/ele_tree">ele_tree</el-menu-item>
+        <el-menu-item index="/ele_tree_1">选项1</el-menu-item>
+      </el-submenu>
+      <el-submenu index="vxetableUse">
+        <template slot="title">
+          <i class="el-icon-s-flag"></i>
+          <span slot="title">VxetableUse</span>
+        </template>
+        <el-menu-item index="/treelist">vxe_tree1</el-menu-item>
+        <el-menu-item index="/treelistNext">vxe_tree2</el-menu-item>
       </el-submenu>
       <el-menu-item index="father">
         <i class="el-icon-menu"></i>
         <span slot="title">导航二</span>
       </el-menu-item>
-      <el-menu-item index="treelist">
-        <i class="el-icon-setting"></i>
-        <span slot="title">tree</span>
-      </el-menu-item>
-      <el-menu-item index="treelistNext">
-        <i class="el-icon-platform-eleme"></i>
-        <span slot="title">treeNext</span>
-      </el-menu-item>
+      <el-submenu index="functionBlock">
+        <template slot="title">
+          <i class="el-icon-view"></i>
+          <span slot="title">功能</span>
+        </template>
+        <el-menu-item index="/cancelspan">去除标签</el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>
@@ -70,6 +83,9 @@ export default {
       console.log(key, keyPath)
     },
     handleClose(key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleSelect(key, keyPath) {
       console.log(key, keyPath)
     },
   },

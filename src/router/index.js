@@ -8,12 +8,12 @@ import Router from 'vue-router'
 const lazyLoad = (path) => () => import(`@/views${path}`)
 
 const Home = lazyLoad('/home') //主页
-const TestOne = lazyLoad('/testone') //主页
-const TestTwo = lazyLoad('/testtwo') //主页
-const Father = lazyLoad('/father') //主页
-const TreeList = lazyLoad('/treeList') //主页
-const EleTree = lazyLoad('/elementUse/eleTree') //主页
-const TreeListNext = lazyLoad('/treeListNext') //主页
+const TestOne = lazyLoad('/testone')
+const CancelSpan = lazyLoad('/functionBlock/cancelSpan')
+const Father = lazyLoad('/father')
+const TreeList = lazyLoad('/vxeTableUse/treeList')
+const EleTree = lazyLoad('/elementUse/eleTree')
+const TreeListNext = lazyLoad('/vxeTableUse/treeListNext')
 // import HelloWorld from '@/views/HelloWorld'
 
 Vue.use(Router)
@@ -27,15 +27,23 @@ export default new Router({
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      name: '我的',
+      meta: { title: '基本信息/我的' }
     },
     {
       path: '/testone',
-      component: TestOne
+      component: TestOne,
+      name: '测试',
+      meta: { title: '基本信息/测试' }
     },
     {
-      path: '/testtwo',
-      component: TestTwo
+      path: '/cancelspan',
+      component: CancelSpan,
+      name: '去除标签',
+      meta: {
+        title: '功能/去除标签'
+      }
     },
     {
       path: '/father',
@@ -43,15 +51,27 @@ export default new Router({
     },
     {
       path: '/treelist',
-      component: TreeList
+      component: TreeList,
+      name: 'tree1',
+      meta: {
+        title: 'VxetableUse/tree1'
+      }
     },
     {
       path: '/treelistNext',
-      component: TreeListNext
+      component: TreeListNext,
+      name: 'tree2',
+      meta: {
+        title: 'VxetableUse/tree2'
+      }
     },
     {
       path: '/ele_tree',
-      component: EleTree
+      component: EleTree,
+      name: 'tree',
+      meta: {
+        title: 'ElementUse/tree'
+      }
     }
   ]
 })

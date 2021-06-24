@@ -11,13 +11,7 @@
         <SideBar />
       </el-aside>
       <el-container>
-        <el-header
-          style="
-            text-align: right;
-            font-size: 12px;
-            background: rgb(238, 241, 246);
-          "
-        >
+        <el-header style="text-align: right; font-size: 12px;">
           <MyHeader />
         </el-header>
         <el-main>
@@ -56,7 +50,6 @@ export default {
   },
 }
 </script>
-
 <style scoped lang="less">
 #app {
 }

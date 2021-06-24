@@ -36,12 +36,16 @@
         </el-col>
         <el-col :span="6">
           <span>QQ:</span>
-          914867344&&318216007
+          914867344 && 318216007
         </el-col>
         <el-col :span="6">
           <span>私人公众号:</span>
           洛小鱼的小故事
           <a @click="handleShow">查看</a>
+        </el-col>
+        <el-col :span="6">
+          <span>职业:</span>
+          前端开发工程师
         </el-col>
       </el-row>
     </el-card>
@@ -53,6 +57,9 @@ import api from '@/api'
 import ChartCode from '@/components/chartCode.vue'
 export default {
   name: 'HelloWorld',
+  data() {
+    return {}
+  },
   props: {
     msg: String,
   },

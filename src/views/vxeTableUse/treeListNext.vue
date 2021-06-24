@@ -69,6 +69,7 @@ export default {
           size: 1,
         },
       ],
+      chooseJson: [],
     }
   },
   mounted() {
@@ -95,7 +96,11 @@ export default {
       for (let i = 0; i < resbasearr.length; i++) {
         this.setsizeone(this.tableData, resbasearr[i])
       }
-      console.log(resjson, 11)
+      this.chooseJson = resjson
+      this.changeColor()
+    },
+    changeColor() {
+      console.log(this.tableData, this.chooseJson)
     },
     setnewtree(resjson, arrone, data, index) {
       if (index < arrone.length) {
@@ -183,6 +188,7 @@ export default {
       }
     },
     setrecursionarr(data, arrone, value, index = 0) {
+      console.log(data[arrone[index]], index, 'kk', arrone)
       if (index != arrone.length - 1) {
         let nextdata = data[arrone[index]].children
         if (data[arrone[index]].writeflag) {
