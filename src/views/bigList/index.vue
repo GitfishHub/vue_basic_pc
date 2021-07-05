@@ -13,9 +13,10 @@
     </el-table>
     <div class="block">
       <el-pagination
-        layout="prev, pager, next"
-        :total="400"
+        layout="sizes,prev, pager, next"
+        :total="total"
         @current-change="handleChangeCurrent"
+        @size-change="handleSizeChange"
       ></el-pagination>
     </div>
   </div>
@@ -32,6 +33,7 @@ export default {
       currenteNow: 1, //当前页码
       pageSize: 10, //每页展示几条
       number: 200, //后端每次给的总条数
+      total: 400, //所有的总条数
     }
   },
   methods: {
@@ -49,6 +51,10 @@ export default {
           this.pageSize,
         this.pageSize * this.currenteNow - (this.current - 1) * this.number,
       )
+    },
+    handleSizeChange(val) {
+      this.pageSize = val
+      this.init()
     },
     async handleChangeCurrent(current) {
       this.currenteNow = current
