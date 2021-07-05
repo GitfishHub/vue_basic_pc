@@ -38,6 +38,7 @@
           <span slot="title">ElementUse</span>
         </template>
         <el-menu-item index="/ele_tree">ele_tree</el-menu-item>
+        <el-menu-item index="/biglist">大数据分页</el-menu-item>
         <el-menu-item index="/ele_tree_1">选项1</el-menu-item>
       </el-submenu>
       <el-submenu index="vxetableUse">
@@ -98,7 +99,7 @@ export default {
 
 	} */
 .el-menu-vertical-demo:not(.el-menu--collapse) {
-  width: 200px;
+  width: 250px;
   height: calc(100%-100px);
 }
 </style>

@@ -2,7 +2,7 @@
   <div id="app">
     <el-container style="height: 100vh; border: 1px solid #eee;">
       <el-aside
-        width="200px"
+        width="250px"
         style="
           background-color: rgb(238, 241, 246);
           border-right: 1px soild #000;

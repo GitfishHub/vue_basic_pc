@@ -14,6 +14,7 @@ const Father = lazyLoad('/father')
 const TreeList = lazyLoad('/vxeTableUse/treeList')
 const EleTree = lazyLoad('/elementUse/eleTree')
 const TreeListNext = lazyLoad('/vxeTableUse/treeListNext')
+const BigList = lazyLoad('/bigList/index')
 // import HelloWorld from '@/views/HelloWorld'
 
 Vue.use(Router)
@@ -71,6 +72,14 @@ export default new Router({
       name: 'tree',
       meta: {
         title: 'ElementUse/tree'
+      }
+    },
+    {
+      path: '/biglist',
+      component: BigList,
+      name: 'bigList',
+      meta: {
+        title: 'ElementUse/大数据分页'
       }
     }
   ]
